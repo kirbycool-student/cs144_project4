@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style>
+      .form-input {
+        display: block;
+      }
+
+      label {
+        width: 20em;
+        float: left;
+        margin-right: 2em;
+        text-align: right;
+      }
+
+      input[type="submit"] {
+        float: right;
+      }
+
+      .form-submit {
+        width: 20em;
+      }
+    </style>
+  </head>
+  <body>
+    <form target='http://localhost:8080/eBay/item' method='GET'>
+      <div class='form-input'>
+        <label>Item Id: </label><input type='text' name='id' />
+      </div>
+      <div class='form-submit'>
+        <input type='submit' value='Submit' />
+      </div>
+    </form>
+  </body>

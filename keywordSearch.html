@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <style>
+      .form-input {
+        display: block
+      }
+
+      label {
+        width: 20em;
+        float: left;
+        margin-right: 2em;
+        text-align: right;
+      }
+
+      input[type="submit"] {
+        float: right;
+      }
+
+      .form-submit {
+        width: 20em;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form target='http://localhost:8080/eBay/search' method='GET'>
+      <div class='form-input'>
+        <label>Query: </label><input type='text' name='q' />
+      </div>
+      <div class='form-input'>
+      <label>Number Of Results To Skip: </label><input type='text' name='numResultsToSkip' />
+      </div>
+      <div class='form-input'>
+      <label>Number Of Results To Return: </label><input type='text' name='numResultsToReturn' />
+      </div>
+      <div class='form-submit'>
+        <input type='submit' value='Submit' />
+      </div>
+    </form>
+  </body>
