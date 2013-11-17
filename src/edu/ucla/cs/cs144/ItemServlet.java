@@ -13,6 +13,21 @@ public class ItemServlet extends HttpServlet implements Servlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // your codes here
+    	int skip = Integer.parseInt( request.getParameter("numResultsToSkip") );
+    	int ret = Integer.parseInt( request.getParameter("numResultsToReturn") );
+    	
+    	SearchConstraint[] constraints = new SearchConstraint[1];
+    	
+        SearchConstraint c = new SearchConstraint();
+        c.setFieldName("ItemId");
+        c.setValue(request.getParameter("itemId"));
+        
+        constraints[0] = c;
+        
+        SearchResult[] results = AuctionSearchClient.advancedSearch(constraints, skip, ret);
+        
+        request.setAttribute("result", results.length == 1 ? results[0] : new SearchResult() );
+    	request.getRequestDispatcher("/item.jsp").forward(request, response);
+        
     }
 }
