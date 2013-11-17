@@ -20,6 +20,6 @@ public class SearchServlet extends HttpServlet implements Servlet {
     	SearchResult[] results = AuctionSearchClient.basicSearch(query, skip, ret);
     	
     	request.setAttribute("results", results);
-    	request.getRequestDispatcher("/index.jsp").forward(request, response);
+    	request.getRequestDispatcher("/searchResults.jsp").forward(request, response);
     }
 }

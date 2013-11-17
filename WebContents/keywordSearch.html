@@ -2,7 +2,7 @@
   <head>
     <style>
       .form-input {
-        display: block;
+        display: block
       }
 
       label {
@@ -19,12 +19,19 @@
       .form-submit {
         width: 20em;
       }
+
     </style>
   </head>
   <body>
-    <form target='http://localhost:8080/eBay/item' method='GET'>
+    <form action='search' method='GET'>
       <div class='form-input'>
-        <label>Item Id: </label><input type='text' name='id' />
+        <label>Query: </label><input type='text' name='q' />
+      </div>
+      <div class='form-input'>
+      <label>Number Of Results To Skip: </label><input type='text' name='numResultsToSkip' />
+      </div>
+      <div class='form-input'>
+      <label>Number Of Results To Return: </label><input type='text' name='numResultsToReturn' />
       </div>
       <div class='form-submit'>
         <input type='submit' value='Submit' />
