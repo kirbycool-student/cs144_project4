@@ -5,14 +5,13 @@
   <head>
   </head>
   <body>
-    <h1>Item For "<%= request.getParameter("") %>"</h1>
+    <h1>Item For "<%= request.getParameter("id") %>"</h1>
     <h2>Search: </h2><br/>
     <form action='item' method='GET'>
-      <label>Query: </label><input type='text' name='itemId' />
+      <label>Query: </label><input type='text' name='id' />
       <input type='submit' value='Submit' />
     </form>
     <div class="attribute><label>Name: </label><span><%= request.getAttribute("name") %></div>
-    <div class="attribute><label>Category: </label><span><%= request.getAttribute("category") %></div>
     <div class="attribute><label>Currently: </label><span><%= request.getAttribute("currently") %></div>
     <div class="attribute><label>Buy Price: </label><span><%= request.getAttribute("buyPrice") %></div>
     <div class="attribute><label>First Bid: </label><span><%= request.getAttribute("firstBid") %></div>
@@ -23,6 +22,20 @@
     <div class="attribute><label>Seller Id: </label><span><%= request.getAttribute("sellerId") %></div>
     <div class="attribute><label>Seller Rating: </label><span><%= request.getAttribute("sellerRating") %></div>  
     <div class="attribute><label>Description: </label><span><%= request.getAttribute("description") %></div>
+    <div class="attribute>
+      <label>Categories: </label>
+      <table>
+      <%
+      String[] categories = (String[]) request.getAttribute("categories");
+      for( String c : categories ) { %>
+        <tr>
+          <td>
+    	    <span><%= r %></span>
+    	  </td>
+    	</tr>
+      <% } %>
+      </table>
+    </div>
     <table>
       <tr>
       	<th>Amount</th>
