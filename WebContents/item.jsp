@@ -1,5 +1,5 @@
 <%@ page import="edu.ucla.cs.cs144.SearchResult" %>
-<%@ page import="import java.util.HashMap" %>
+<%@ page import="java.util.HashMap" %>
 
 <html>
   <head>
