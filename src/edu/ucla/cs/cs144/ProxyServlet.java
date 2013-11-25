@@ -36,7 +36,8 @@ public class ProxyServlet extends HttpServlet implements Servlet {
 			suggestResponse.append(inputLine);
 		}
 		in.close();
- 
+		
+		response.setContentType("text/xml");
 		response.getWriter().write(suggestResponse.toString());
     }
 }
