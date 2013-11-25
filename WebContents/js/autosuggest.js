@@ -9,8 +9,8 @@ SuggestionProvider.prototype.requestSuggestions = function (oAutoSuggestControl)
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function () {
-    	if( xhr.readyState < 4 || xhr.status !== 200 ) return;
-    	
+	if( xhr.readyState !== 4 || xhr.status !== 200 ) { return };
+	
     	var xml = xhr.responseXML;
     	var suggestions = xml.getElementsByTagName("suggestion");
     	
@@ -74,7 +74,6 @@ AutoSuggestControl.prototype.init = function () {
 };
 
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent) {
-	console.log("oh shit a key up");
     var iKeyCode = oEvent.keyCode;
 
     //for backspace (8) and delete (46), shows suggestions without typeahead

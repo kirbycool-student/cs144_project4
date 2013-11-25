@@ -2,12 +2,19 @@
 
 <html>
   <head>
+    <script type="text/javascript" src="js/autosuggest.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/page.css" />        
+    <script type="text/javascript">
+      window.onload = function () {
+        var oTextbox = new AutoSuggestControl(document.getElementById("queryBox"), new SuggestionProvider());        
+      }
+    </script>
   </head>
   <body>
     <h1>Search Results For "<%= request.getParameter("q") %>"</h1>
     <h2>Search: </h2><br/>
     <form action='search' method='GET'>
-      <label>Query: </label><input type='text' name='q' />
+      <label>Query: </label><input id='queryBox' type='text' name='q' />
       <input type='hidden' name='numResultsToSkip' value='<%= request.getParameter("numResultsToSkip") %>'/>
       <input type='hidden' name='numResultsToReturn' value='<%= request.getParameter("numResultsToReturn") %>' />
       <input type='submit' value='Submit' />
