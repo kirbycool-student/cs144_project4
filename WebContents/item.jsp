@@ -3,6 +3,41 @@
 
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+    <style type="text/css"> 
+      html { height: 100% } 
+      body { height: 100%; margin: 0px; padding: 0px } 
+      #map_canvas { height: 100% } 
+    </style> 
+    <script type="text/javascript" 
+        src="http://maps.google.com/maps/api/js?sensor=false"> 
+    </script> 
+    <script type="text/javascript"> 
+      var geocoder;
+      var map;
+      function initialize() { 
+        geocoder = new google.maps.Geocoder();
+        var loc = '${location} ${country}';
+        geocoder.geocode( {address: loc}, function(results, status) {
+          if(status == google.maps.GeocoderStatus.OK) {
+            var latlng = results[0].geometry.location;
+            var myOptions = { 
+              zoom: 4, // default is 8  
+              center: latlng, 
+              mapTypeId: google.maps.MapTypeId.ROADMAP 
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"),
+              myOptions); 
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          }
+        });
+      } 
+      google.maps.event.addDomListener(window, 'load', initialize);
+    
+    </script> 
     <style>
   	  /* inline styles are dumb but so lazy */
   	  .attribute label {
@@ -22,7 +57,7 @@
     <div class="attribute"><label>Buy Price: </label><span><%= request.getAttribute("buyPrice") %></span></div>
     <div class="attribute"><label>First Bid: </label><span><%= request.getAttribute("firstBid") %></span></div>
     <div class="attribute"><label>Number of Bids: </label><span><%= request.getAttribute("numberOfBids") %></span></div>
-    <div class="attribute"><label>Location: </label><span><%= request.getAttribute("location") %></span></div>
+    <div class="attribute"><label>Location: </label><span="location"><%= request.getAttribute("location") %></span></div>
     <div class="attribute"><label>Country: </label><span><%= request.getAttribute("country") %></span></div>
     <div class="attribute"><label>Started: </label><span><%= request.getAttribute("started") %></span></div>
     <div class="attribute"><label>Seller Id: </label><span><%= request.getAttribute("sellerId") %></span></div>
@@ -65,5 +100,6 @@
       </tr>
       <% } %>
     </table>
+    <div id="map_canvas" style="width:400; height:400"></div>
   </body>
 </html>
