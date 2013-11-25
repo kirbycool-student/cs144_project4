@@ -1,5 +1,12 @@
 <html>
   <head>
+    <script type="text/javascript" src="js/autosuggest.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/page.css" />        
+    <script type="text/javascript">
+      window.onload = function () {
+        var oTextbox = new AutoSuggestControl(document.getElementById("queryBox"), new SuggestionProvider());        
+      }
+    </script>
     <style>
       .form-input {
         display: block
@@ -20,18 +27,18 @@
         width: 20em;
       }
 
-    </style>
+    </style>  
   </head>
   <body>
     <form action='search' method='GET'>
-      <div class='form-input'>
-        <label>Query: </label><input type='text' name='q' />
-      </div>
-      <div class='form-input'>
-      <label>Number Of Results To Skip: </label><input type='text' name='numResultsToSkip' />
+       <div class='form-input'>
+        <label>Number Of Results To Skip: </label><input type='text' name='numResultsToSkip' />
       </div>
       <div class='form-input'>
       <label>Number Of Results To Return: </label><input type='text' name='numResultsToReturn' />
+      </div>
+      <div class='form-input'>
+        <label>Query: </label><input id='queryBox' type='text' name='q' />
       </div>
       <div class='form-submit'>
         <input type='submit' value='Submit' />
