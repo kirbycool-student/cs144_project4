@@ -7,6 +7,7 @@
         var oTextbox = new AutoSuggestControl(document.getElementById("queryBox"), new SuggestionProvider());        
       }
     </script>
+    <meta name="viewport" content="user-scalable=no, width=device-width">
     <style>
       .form-input {
         display: block
@@ -25,6 +26,27 @@
 
       .form-submit {
         width: 20em;
+      }
+
+      @media (max-device-width: 480px) {
+
+        label {
+          width: 100%;
+          text-align: left;
+        }
+
+        input[type="text"] {
+          clear: both;
+          width: 100%;
+        }
+
+        input[type="submit"] {
+          float: left;
+        }
+
+        .form-submit {
+          width: 100%;
+        }
       }
 
     </style>  
