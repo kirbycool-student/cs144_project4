@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -80,6 +81,13 @@ public class ItemServlet extends HttpServlet implements Servlet {
         bids[i].put("country", getElementTextByTagNameNR(bidder, "Country"));
       }
       request.setAttribute("bids", bids);
+      
+      //set session variables
+      HttpSession session = request.getSession();
+      session.setAttribute("id", request.getParameter("id"));
+      session.setAttribute("name", request.getAttribute("name"));
+      session.setAttribute("buyPrice", request.getAttribute("buyPrice"));
+      
       request.getRequestDispatcher("/item.jsp").forward(request, response);
 /*
       int id = Integer.parseInt( request.getParameter("id"));
