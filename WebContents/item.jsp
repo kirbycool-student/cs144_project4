@@ -52,6 +52,11 @@
       <label>Query: </label><input type='text' name='id' />
       <input type='submit' value='Submit' />
     </form>
+    <% if( request.getAttribute("buyPrice") != "" ) { %>
+      <form action='https://<%= request.getServerName()%>:8443<%= request.getContextPath() %>/creditCard' method=GET />
+       <input type='submit' value='Pay Now' />
+      </form>
+    <% } %>
     <div class="attribute"><label>Name: </label><span><%= request.getAttribute("name") %></span></div>
     <div class="attribute"><label>Currently: </label><span><%= request.getAttribute("currently") %></span></div>
     <div class="attribute"><label>Buy Price: </label><span><%= request.getAttribute("buyPrice") %></span></div>
